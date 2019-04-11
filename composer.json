@@ -1,0 +1,34 @@
+{
+    "name": "inspiredminds/contao-backend-forms",
+    "description": "Extension to Contao Haste for quick creation of back end forms.",
+    "keywords": ["contao", "backend", "forms"],
+    "type": "contao-bundle",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Fritz Michael Gschwantner",
+            "homepage": "http://www.inspiredminds.at",
+            "email": "fmg@inspiredminds.at",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "fmg@inspiredminds.at",
+        "issues": "https://github.com/inspiredminds/contao-backend-forms/issues",
+        "source": "https://github.com/inspiredminds/contao-backend-forms",
+        "forum": "https://community.contao.org/de"
+    },
+    "require": {
+        "php": ">=7.1",
+        "contao/core-bundle": "^4.4",
+        "codefog/contao-haste": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "InspiredMinds\\ContaoBackendFormsBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "InspiredMinds\\ContaoBackendFormsBundle\\ContaoManagerPlugin"
+    }
+}
