@@ -4,7 +4,7 @@
 <?php $this->endblock(); ?>
 
 <?php $this->block('field'); ?>
-  <fieldset id="ctrl_<?= $this->id ?>" class="checkbox_container">
+  <fieldset id="ctrl_<?= $this->id ?>" class="tl_checkbox_container">
 
     <?php if ($this->label): ?>
       <legend>
