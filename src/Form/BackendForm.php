@@ -32,9 +32,13 @@ class BackendForm extends \Haste\Form\Form
     protected static function adjustDcaForBackend(array &$arrDca): void
     {
         $type = $arrDca['inputType'] ?: $arrDca['type'];
+        $class = $GLOBALS['TL_FFL'][$type];
 
-        $arrDca['eval']['template'] = $arrDca['eval']['template'] ?? 'form_' . $type . '_backend';
-        $arrDca['template'] = $arrDca['template'] ?? 'form_' . $type . '_backend';
+        /** @var \Contao\Widget $widget */
+        $widget = new $class;
+
+        $arrDca['eval']['template'] = $arrDca['eval']['template'] ?? $widget->template.'_backend';
+        $arrDca['template'] = $arrDca['template'] ?? $widget->template.'_backend';
 
         if ('submit' === $type) {
             $arrDca['eval']['class'] = $arrDca['eval']['class'] ?? 'tl_submit';
