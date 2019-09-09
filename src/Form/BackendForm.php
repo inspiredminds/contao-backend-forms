@@ -44,4 +44,20 @@ class BackendForm extends \Haste\Form\Form
             $arrDca['eval']['class'] = $arrDca['eval']['class'] ?? 'tl_submit';
         }
     }
+
+    public function addToObject($objObject)
+    {
+        parent::addToObject($objObject);
+
+        foreach ($objObject->visibleWidgets as $objWidget) {
+            /** @var \Contao\Widget $objWidget */
+            if ('submit' !== $objWidget->type) {
+                $objObject->editFields .= $objWidget->parse();
+            } else {
+                $objObject->submitFields .= $objWidget->parse();
+            }
+        }
+
+        return $this;
+    }
 }

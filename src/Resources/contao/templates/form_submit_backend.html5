@@ -1,3 +1,3 @@
-<div class="submit_container clr m12">
+<div class="tl_submit_container">
   <button type="submit" id="ctrl_<?= $this->id ?>" class="tl_submit"<?= $this->getAttributes() ?>><?= $this->slabel ?></button>
 </div>

@@ -16,8 +16,13 @@
         <?php endif; ?>
       <?php endif; ?>
       <?= $this->hidden ?>
-      <?= $this->fields ?>
+      <?= $this->editFields ?>
     </div>
+    <?php if ($this->submitFields): ?>
+      <div class="tl_formbody_submit">
+        <?= $this->submitFields ?>
+      </div>
+    <?php endif; ?>
   </form>
 
 </div>
