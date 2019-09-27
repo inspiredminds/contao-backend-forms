@@ -5,4 +5,6 @@
 Contao Backend Forms
 =====================
 
-WIP
+Extension of `Haste\Form\Forn` of `codefog/contao-haste to quickly` to quickly build a form for the back end.
+
+This is still a work in progress.
