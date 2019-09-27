@@ -19,7 +19,7 @@
       <?= $this->editFields ?>
     </div>
     <?php if ($this->submitFields): ?>
-      <div class="tl_formbody_submit">
+      <div class="tl_formbody_submit" style="clear:both">
         <?= $this->submitFields ?>
       </div>
     <?php endif; ?>
