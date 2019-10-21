@@ -16,7 +16,10 @@
         <?php endif; ?>
       <?php endif; ?>
       <?= $this->hidden ?>
-      <?= $this->editFields ?>
+      <fieldset class="tl_box">
+        <legend><?= $this->legend ?></legend>
+        <?= $this->editFields ?>
+      </fieldset>
     </div>
     <?php if ($this->submitFields): ?>
       <div class="tl_formbody_submit" style="clear:both">
