@@ -13,8 +13,10 @@ declare(strict_types=1);
 namespace InspiredMinds\ContaoBackendFormsBundle\Form;
 
 use Contao\FrontendTemplate;
+use Contao\System;
 use Contao\TemplateLoader;
 use Haste\Util\ArrayPosition;
+use InspiredMinds\ContaoBackendFormsBundle\EventListener\ParseWidgetListener;
 
 class BackendForm extends \Haste\Form\Form
 {
@@ -37,7 +39,13 @@ class BackendForm extends \Haste\Form\Form
         $template->class = 'hasteform_'.$this->getFormId();
         $template->formSubmit = $this->getFormId();
 
+        /** @var ParseWidgetListener $parseWidgetListener */
+        $parseWidgetListener = System::getContainer()->get(ParseWidgetListener::class);
+        $parseWidgetListener->setIsBackendForm(true);
+
         $this->addToTemplate($template);
+
+        $parseWidgetListener->reset();
 
         return $template->parse();
     }
