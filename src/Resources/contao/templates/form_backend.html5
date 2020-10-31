@@ -17,7 +17,9 @@
       <?php endif; ?>
       <?= $this->hidden ?>
       <fieldset class="tl_box">
-        <legend><?= $this->legend ?></legend>
+        <?php if ($this->legend): ?>
+          <legend><?= $this->legend ?></legend>
+        <?php endif; ?>
         <?= $this->editFields ?>
       </fieldset>
     </div>
