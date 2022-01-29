@@ -28,7 +28,7 @@
         "php": ">=7.1",
         "contao/core-bundle": "^4.4",
         "codefog/contao-haste": "^4.0",
-        "symfony/dependency-injection": "^3.0 || ^4.0",
+        "symfony/dependency-injection": "^3.0 || ^4.0 || ^5.1",
         "symfony/contracts": "^1.0 || ^2.0"
     },
     "autoload": {
