@@ -1,3 +1,4 @@
 services:
-  InspiredMinds\ContaoBackendFormsBundle\EventListener\ParseWidgetListener:
-    public: true
+    InspiredMinds\ContaoBackendFormsBundle\EventListener\ParseWidgetListener:
+        autoconfigure: true
+        public: true

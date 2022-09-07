@@ -12,10 +12,14 @@ declare(strict_types=1);
 
 namespace InspiredMinds\ContaoBackendFormsBundle\EventListener;
 
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\StringUtil;
 use Contao\Widget;
 use Symfony\Contracts\Service\ResetInterface;
 
+/** 
+ * @Hook("parseWidget")
+ */
 class ParseWidgetListener implements ResetInterface
 {
     private $isBackendForm = false;

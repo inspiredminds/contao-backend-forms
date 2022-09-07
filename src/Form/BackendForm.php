@@ -12,17 +12,18 @@ declare(strict_types=1);
 
 namespace InspiredMinds\ContaoBackendFormsBundle\Form;
 
+use Codefog\HasteBundle\Util\ArrayPosition;
+use Contao\CoreBundle\Csrf\ContaoCsrfTokenManager;
 use Contao\FrontendTemplate;
 use Contao\System;
 use Contao\TemplateLoader;
-use Haste\Util\ArrayPosition;
 use InspiredMinds\ContaoBackendFormsBundle\EventListener\ParseWidgetListener;
 
-class BackendForm extends \Haste\Form\Form
+class BackendForm extends \Codefog\HasteBundle\Form\Form
 {
     protected $legend;
 
-    public function generate($templateName = null)
+    public function generate(string $templateName = null): string
     {
         if (null === $templateName) {
             $templateName = 'form_backend';
@@ -34,41 +35,47 @@ class BackendForm extends \Haste\Form\Form
             }
         }
 
+        $container = System::getContainer();
+        /** @var ContaoCsrfTokenManager $tokenManager */
+        $tokenManager = $container->get('contao.csrf.token_manager');
+        $tokenName = $container->getParameter('%contao.csrf_token_name%');
+
         $template = new FrontendTemplate($templateName);
         $template->legend = $this->legend;
         $template->class = 'hasteform_'.$this->getFormId();
         $template->formSubmit = $this->getFormId();
+        $template->requestToken = $tokenManager->getToken($tokenName)->getValue();
 
         /** @var ParseWidgetListener $parseWidgetListener */
-        $parseWidgetListener = System::getContainer()->get(ParseWidgetListener::class);
+        $parseWidgetListener = $container->get(ParseWidgetListener::class);
         $parseWidgetListener->setIsBackendForm(true);
 
-        $this->addToTemplate($template);
+        $this->addToObject($template);
 
         $parseWidgetListener->reset();
 
         return $template->parse();
     }
 
-    public function addFormField($strName, array $arrDca, ArrayPosition $position = null)
+    public function addFormField(string $fieldName, array $fieldConfig, ArrayPosition $position = null): self
     {
-        self::adjustDcaForBackend($arrDca);
+        self::adjustDcaForBackend($fieldConfig);
 
-        if (!\is_array($arrDca['label'])) {
-            $arrDca['label'] = [$arrDca['label']];
+        if (!\is_array($fieldConfig['label'])) {
+            $fieldConfig['label'] = [$fieldConfig['label']];
         }
 
-        return parent::addFormField($strName, $arrDca, $position);
+        return parent::addFormField($fieldName, $fieldConfig, $position);
     }
 
-    public function addFieldFromFormGenerator($strName, array $arrDca, ArrayPosition $position = null): void
+    public function addFieldFromFormGenerator(string $fieldName, array $fieldConfig, ArrayPosition $position = null): self
     {
-        self::adjustDcaForBackend($arrDca);
+        self::adjustDcaForBackend($fieldConfig);
 
-        parent::addFieldFromFormGenerator($strName, $arrDca, $position);
+        return parent::addFieldFromFormGenerator($fieldName, $fieldConfig, $position);
     }
 
-    public function addToObject($objObject)
+    public function addToObject(object $objObject): self
     {
         parent::addToObject($objObject);
 
