@@ -17,7 +17,7 @@ use Contao\StringUtil;
 use Contao\Widget;
 use Symfony\Contracts\Service\ResetInterface;
 
-/** 
+/**
  * @Hook("parseWidget")
  */
 class ParseWidgetListener implements ResetInterface

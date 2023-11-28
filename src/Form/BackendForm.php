@@ -38,7 +38,7 @@ class BackendForm extends \Codefog\HasteBundle\Form\Form
         $container = System::getContainer();
         /** @var ContaoCsrfTokenManager $tokenManager */
         $tokenManager = $container->get('contao.csrf.token_manager');
-        $tokenName = $container->getParameter('%contao.csrf_token_name%');
+        $tokenName = $container->getParameter('contao.csrf_token_name');
 
         $template = new FrontendTemplate($templateName);
         $template->legend = $this->legend;
