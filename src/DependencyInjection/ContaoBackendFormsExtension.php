@@ -3,11 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoBackendFormsBundle.
- *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoBackendFormsBundle\DependencyInjection;
@@ -21,7 +17,8 @@ class ContaoBackendFormsExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        (new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config')))
+            ->load('services.yaml')
+        ;
     }
 }

@@ -3,23 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoBackendFormsBundle.
- *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoBackendFormsBundle\EventListener;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\StringUtil;
 use Contao\Widget;
 use Symfony\Contracts\Service\ResetInterface;
 
-/**
- * @Hook("parseWidget")
- */
+#[AsHook('parseWidget')]
 class ParseWidgetListener implements ResetInterface
 {
     private $isBackendForm = false;

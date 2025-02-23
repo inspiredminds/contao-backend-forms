@@ -3,11 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoBackendFormsBundle.
- *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoBackendFormsBundle;
@@ -20,11 +16,8 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 /**
  * Plugin for the Contao Manager.
  */
-class ContaoManagerPlugin implements BundlePluginInterface
+class Plugin implements BundlePluginInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getBundles(ParserInterface $parser)
     {
         return [
