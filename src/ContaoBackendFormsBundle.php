@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class ContaoBackendFormsBundle extends Bundle
 {
-    public function getPath()
+    public function getPath(): string
     {
         return \dirname(__DIR__);
     }
