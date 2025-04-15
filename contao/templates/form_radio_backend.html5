@@ -1,3 +1,11 @@
+<?php
+
+use Contao\CoreBundle\ContaoCoreBundle;
+
+$isc5 = !version_compare(ContaoCoreBundle::getVersion(), '5', '<');
+
+?>
+
 <?php $this->extend('form_row_backend'); ?>
 
 <?php $this->block('label'); ?>
@@ -23,7 +31,7 @@
       <?php endif; ?>
 
       <?php if ($option['type'] == 'option'): ?>
-        <input type="radio" name="<?= $option['name'] ?>" id="opt_<?= $option['id'] ?>" class="tl_radio" value="<?= $option['value'] ?>"<?= $option['checked'] ?><?= $option['attributes'] ?>> <label id="lbl_<?= $option['id'] ?>" for="opt_<?= $option['id'] ?>"><?= $option['label'] ?></label><br>
+        <?php if ($isc5): ?><span><?php endif; ?><input type="radio" name="<?= $option['name'] ?>" id="opt_<?= $option['id'] ?>" class="tl_radio" value="<?= $option['value'] ?>"<?= $option['checked'] ?><?= $option['attributes'] ?>> <label id="lbl_<?= $option['id'] ?>" for="opt_<?= $option['id'] ?>"><?= $option['label'] ?></label><?php if ($isc5): ?></span><?php else: ?><br><?php endif; ?>
       <?php endif; ?>
 
       <?php if ($option['type'] == 'group_end'): ?>
