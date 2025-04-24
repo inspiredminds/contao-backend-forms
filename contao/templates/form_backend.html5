@@ -31,6 +31,8 @@ $isc5 = !version_compare(ContaoCoreBundle::getVersion(), '5', '<');
             <div class="widget-group">
               <?= $this->editFields ?>
             </div>
+          <?php else: ?>
+            <?= $this->editFields ?>
           <?php endif; ?>
         </fieldset>
       </div>
