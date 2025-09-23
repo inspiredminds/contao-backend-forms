@@ -1,18 +1,28 @@
 <?php
 
-use Contao\CoreBundle\ContaoCoreBundle;
+$this->wrapperAttributes = $this->attrs($this->cssID)
+  ->addClass([$this->class, 'block'])
+  ->addStyle((string) $this->style, $this->style)
+  ->mergeWith($this->wrapperAttributes)
+;
 
-$isc5 = !version_compare(ContaoCoreBundle::getVersion(), '5', '<');
+$this->formAttributes = $this->attrs($this->novalidate)
+  ->setIfExists('action', $this->action)
+  ->setIfExists('method', $this->method)
+  ->setIfExists('enctype', $this->enctype)
+  ->addClass(['tl_form', 'tl_edit_form'])
+  ->mergeWith($this->formAttributes)
+;
 
 ?>
 
-<div class="<?= $this->class ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+<div<?= $this->wrapperAttributes ?>>
 
   <?php if ($this->headline): ?>
     <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
   <?php endif; ?>
 
-  <form<?php if ($this->action): ?> action="<?= $this->action ?>"<?php endif; ?> method="<?= $this->method ?>" enctype="<?= $this->enctype ?>" class="tl_form tl_edit_form"<?= $this->novalidate ?>>
+  <form<?= $this->formAttributes ?>>
     <?php if ($this->method != 'get'): ?>
       <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formSubmit ?>">
       <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
@@ -27,13 +37,9 @@ $isc5 = !version_compare(ContaoCoreBundle::getVersion(), '5', '<');
           <?php if ($this->legend): ?>
             <legend><?= $this->legend ?></legend>
           <?php endif; ?>
-          <?php if ($isc5): ?>
-            <div class="widget-group">
-              <?= $this->editFields ?>
-            </div>
-          <?php else: ?>
+          <div class="widget-group">
             <?= $this->editFields ?>
-          <?php endif; ?>
+          </div>
         </fieldset>
       </div>
     <?php endif; ?>
