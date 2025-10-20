@@ -4,6 +4,4 @@
 Contao Backend Forms
 =====================
 
-Extension of `Codefog\HasteBundle\Form\Form` of `codefog/contao-haste` to quickly build a form for the back end.
-
-This is still a work in progress.
+Extension of [`Codefog\HasteBundle\Form\Form`](https://github.com/codefog/contao-haste/blob/main/docs/Form.md) of `codefog/contao-haste` to quickly build a form for the back end.
