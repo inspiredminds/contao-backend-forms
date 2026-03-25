@@ -45,7 +45,9 @@ $this->formAttributes = $this->attrs($this->novalidate)
     <?php endif; ?>
     <?php if ($this->submitFields): ?>
       <div class="tl_formbody_submit" style="clear:both">
-        <?= $this->submitFields ?>
+        <div class="tl_submit_container">
+          <?= $this->submitFields ?>
+        </div>
       </div>
     <?php endif; ?>
   </form>
